@@ -17,8 +17,9 @@ var src = {
 function serve () {
     return gulp.src('./')
         .pipe(gulpWebServer({
+            host: '0.0.0.0',
             livereload: true,
-            directoryListing: true,
+            directoryListing: false,
             open: true
         }));
 }
