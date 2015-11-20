@@ -7,10 +7,6 @@
         "emitDecoratorMetadata": true,
         "sourceMap": true
     },
-    "filesGlob": [
-        "typings/tsd.d.ts",
-        "src/ts/**/*.ts"
-    ],
     "exclude": [
         "node_modules",
         "jspm_packages"
