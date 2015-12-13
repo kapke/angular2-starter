@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-jspm install
+#jspm install
 tsd install
