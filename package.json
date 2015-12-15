@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "install": "bash scripts/install.sh",
-    "install-globals": "bash scripts/install-globals.sh"
+    "install": "./node_modules/.bin/tsd install",
+    "serve": "./node_modules/.bin/gulp serve",
+    "build": "./node_modules/.bin/gulp build"
   },
   "repository": {
     "type": "git",
