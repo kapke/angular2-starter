@@ -48,8 +48,6 @@ crashlytics.properties
 crashlytics-build.properties
 
 typings/
-jspm_packages/
 node_modules/
-src/**/*.js
-src/**/*.css
+dist/
 

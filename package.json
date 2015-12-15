@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "install": "bash scripts/install.sh",
-    "install-globals": "bash scripts/install-globals.sh"
+    "install": "./node_modules/.bin/tsd install",
+    "serve": "./node_modules/.bin/gulp serve",
+    "build": "./node_modules/.bin/gulp build"
   },
   "repository": {
     "type": "git",
@@ -19,23 +19,20 @@
   },
   "homepage": "https://github.com/kapke/angular2-starter#readme",
   "dependencies": {
-    "angular2": "^2.0.0-alpha.46"
-  },
-  "jspm": {
-    "dependencies": {
-      "es6-shim": "github:es-shims/es6-shim@^0.33.8",
-      "reflect-metadata": "npm:reflect-metadata@^0.1.2",
-      "valid-url": "npm:valid-url@^1.0.9"
-    },
-    "devDependencies": {}
+    "angular2": "^2.0.0-beta.0",
+    "es6-promise": "^3.0.2",
+    "es6-shim": "^0.33.13",
+    "reflect-metadata": "^0.1.2",
+    "rxjs": "^5.0.0-alpha.14",
+    "systemjs": "^0.19.6",
+    "zone.js": "^0.5.10"
   },
   "devDependencies": {
     "gulp": "^3.9.0",
     "gulp-sass": "^2.0.4",
     "gulp-sourcemaps": "^1.6.0",
-    "gulp-typescript": "^2.9.2",
+    "gulp-typescript": "^2.10",
     "gulp-webserver": "^0.9.1",
-    "jspm": "^0.16.13",
     "merge2": "^0.3.6"
   }
 }
