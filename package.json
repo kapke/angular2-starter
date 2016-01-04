@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "install": "./node_modules/.bin/tsd install",
     "serve": "./node_modules/.bin/gulp serve",
     "build": "./node_modules/.bin/gulp build"
   },
