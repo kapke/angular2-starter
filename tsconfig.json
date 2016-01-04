@@ -8,7 +8,6 @@
         "sourceMap": true
     },
     "exclude": [
-        "node_modules",
-        "jspm_packages"
+        "node_modules"
     ]
 }
