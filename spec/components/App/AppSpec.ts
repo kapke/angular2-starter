@@ -1,3 +1,5 @@
+///<reference path="../../../typings/browser.d.ts" />
+
 import App from "../../../app/components/App/App";
 
 describe('AppComponent', function () {

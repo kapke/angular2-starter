@@ -4,7 +4,7 @@ Simple project for start with Angular2.
 
 # Setup
 
-1. On Linux/Mac - install [nvm](https://github.com/creationix/nvm) and using nvm install node v5.x. On Windows - download node v5.x binaries and install them.
+1. On Linux/Mac - install [nvm](https://github.com/creationix/nvm) and using `nvm install node v5.x` command. On Windows - download node v5.x binaries and install them.
 3. run `npm install`
 
 # Run

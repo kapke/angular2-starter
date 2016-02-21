@@ -10,8 +10,8 @@ var specDir = 'spec/';
 var specRoot = './spec/spec.ts';
 var src = {
         specTs: ['./spec/**/*Spec.ts'],
-        appTs: ['./app/**/*.ts'],
-        allTs: ['./**/*.ts', '!./node_modules/**/*.ts'],
+        appTs: ['./app/*.ts', './app/**/*.ts'],
+        allTs: ['./**/*.ts', '!./node_modules/**/*.ts', '!./typings/**/*.ts'],
         templates: ['./app/*.html', './app/**/*.html'],
         sass: ['./app/style/style.scss', './app/style/*.scss']
     },
@@ -47,20 +47,19 @@ function compileTs (src, dest) {
         .pipe(ts(tsProject));
 
     return tsResult.js
+        .on('end', function () {
+            console.log('TS build finished');
+        })
         .pipe(sourcemaps.write({includeContent: true}))
         .pipe(gulp.dest(dest));
 }
 
 function compileAppTs () {
-    return compileTs(src.ts, dest.js);
+    return compileTs(src.appTs, dest.js);
 }
 
 function compileSpecTs () {
-    return compileTs(src.spec, dest.spec);
-}
-
-function compileAllTs () {
-    return compileTs(src.allTs, dest.dest);
+    return compileTs(src.specTs, dest.spec);
 }
 
 function compileSass () {
@@ -97,15 +96,16 @@ function generateSpecRoot (callback) {
             .map(buildImport)
             .join('\n');
 
+        imports = '///<reference path="../typings/browser/ambient/jasmine/jasmine.d.ts" />\n'+imports;
+
         fs.writeFile(specRoot, imports, callback);
     });
 }
 
 function startWatchers () {
-    gulp.watch(src.spec, compileSpecTs);
-    gulp.watch(src.ts, compileAppTs);
-    gulp.watch(src.sass, compileSass);
-    gulp.watch(src.templates, copyHtml);
+    gulp.watch(src.allTs, ['buildTs']);
+    gulp.watch(src.sass, ['buildSass']);
+    gulp.watch(src.templates, ['copyHtml']);
 }
 
 gulp.task('buildSass', function () {
@@ -117,18 +117,18 @@ gulp.task('copyHtml', function () {
 });
 
 gulp.task('buildAppTs', function () {
-    return compileAppTs();
-});
-
-gulp.task('buildSpecTs', ['generateSpecRoot'], function () {
-    return compileSpecTs();
-});
-
-gulp.task('buildTs', ['generateSpecRoot'], function () {
-    return compileAllTs();
+    compileAppTs();
 });
 
 gulp.task('generateSpecRoot', generateSpecRoot);
+
+gulp.task('buildSpecTs', ['generateSpecRoot'], function () {
+    compileSpecTs();
+});
+
+gulp.task('buildTs', ['generateSpecRoot'], function () {
+    compileTs(src.allTs, dest.dest);
+});
 
 gulp.task('build', ['buildSass', 'copyHtml', 'buildTs']);
 
