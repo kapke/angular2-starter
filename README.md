@@ -9,7 +9,7 @@ Simple project for start with Angular2.
 
 # Run
 
-Just run `npm run serve`
+Just run `npm run serve`. During first build there can appear errors like `duplicate identifier`, this is caused by need of manually load typings from Angular 2 sources. This behaviour should be fixed in one of next versions of Angular 2 and this starter.
 
 # Tests
 
